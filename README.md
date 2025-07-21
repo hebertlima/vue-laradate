@@ -1,7 +1,3 @@
-Here's the README.md content again, ensuring it's properly formatted in Markdown for you to copy.
-
------
-
 # Vue Laradate Validators (🚧 Under Development 🚧)
 
 A Vue 3 plugin to seamlessly integrate Vuelidate with `vue-i18n` for translated validation messages, inspired by Laravel's validation error messages.
