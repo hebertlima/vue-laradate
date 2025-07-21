@@ -90,7 +90,6 @@ A Vue 3 plugin to seamlessly integrate Vuelidate with `vue-i18n` for translated 
     <script setup>
     import { ref, computed } from 'vue'
     import { useVuelidate } from '@vuelidate/core'
-    // Import your custom validators from your plugin's export
     - import { required, email } from '@vuelidate/validators'
 	+ import { required, email } from '@hebertlima/vue-laradate/validators'
 	
