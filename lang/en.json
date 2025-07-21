@@ -1,0 +1,30 @@
+{
+	"validations": {
+		"required": "The field {property} is required.",
+		"alpha": "The {property} is not alphabetical",
+		"alphaNum": "The {property} must be alpha-numeric",
+		"and": "The {property} does not match all of the provided validators",
+		"between": "The {property} must be between {min} and {max}",
+		"decimal": "{property} must be decimal",
+		"email": "{property} is not a valid email address",
+		"integer": "{property} is not an integer",
+		"ipAddress": "The {property} is not a valid IP address",
+		"macAddress": "The {property} is not a valid MAC Address",
+		"maxLength": "The maximum length allowed is {max}",
+		"maxValue": "The maximum {property} allowed is {max}",
+		"minLength": "This field should be at least {min} characters long",
+		"minValue": "The minimum {property} allowed is {min}",
+		"not": "The {property} does not match the provided validator",
+		"numeric": "{property} must be numeric",
+		"or": "The {property} does not match any of the provided validators",
+		"requiredIf": "The {property} is required",
+		"requiredUnless": "The {property} is required",
+		"sameAs": "The {property} must be equal to the {otherName} value",
+		"url": "The {property} is not a valid URL address"
+	},
+	"attributes": {
+		"email": "E-mail",
+		"password": "Password",
+		"username": "Username"
+	}
+}

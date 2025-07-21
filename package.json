@@ -1,0 +1,39 @@
+{
+	"name": "@hebertlima/vue-laradate",
+	"version": "1.0.9",
+	"description": "Vue + Vuelidate + i18n plugin with Laravel-style attribute labels",
+	"main": "index.js",
+	"module": "index.js",
+	"type": "module",
+	"exports": {
+		".": {
+			"import": "./index.js",
+			"require": "./index.js"
+		},
+		"./validators": {
+			"import": "./validators.js",
+			"require": "./validators.js"
+		}
+	},
+	"files": [
+		"index.js",
+		"validators.js",
+		"lang"
+	],
+	"keywords": [
+		"vue",
+		"vuelidate",
+		"validation",
+		"i18n",
+		"laravel"
+	],
+	"author": "Hebert Lima <hebert.dev@hotmail.com>",
+	"license": "MIT",
+	"dependencies": {
+		"@vuelidate/validators": "^2.0.0",
+		"vue-i18n": "^9.0.0"
+	},
+	"peerDependencies": {
+		"vue": "^3.0.0"
+	}
+}
