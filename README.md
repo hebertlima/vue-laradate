@@ -16,9 +16,7 @@ A Vue 3 plugin to seamlessly integrate Vuelidate with `vue-i18n` for translated 
 1.  **Install Dependencies:**
 
     ```bash
-    npm install vue-laradate @vuelidate/core @vuelidate/validators vue-i18n@next
-    # OR
-    yarn add vue-laradate @vuelidate/core @vuelidate/validators vue-i18n@next
+    npm install @hebertlima/vue-laradate
     ```
 
 2.  **Plugin Configuration (`main.js` or `main.ts`):**
@@ -33,11 +31,11 @@ A Vue 3 plugin to seamlessly integrate Vuelidate with `vue-i18n` for translated 
     const app = createApp(App)
 
     app.use(VueLaradate, {
-        locale: 'pt', 			// default locale
+        locale: 'pt', 	// default locale
         fallbackLocale: 'en', 	// fallback locale
         messages: {
 			en: {}, // you can replace this with your own messages
-            pt: pt, // translate file,
+			pt: pt, // translate file,
 			es: {
 				validations: {},
 				attributes: {},
@@ -54,9 +52,7 @@ A Vue 3 plugin to seamlessly integrate Vuelidate with `vue-i18n` for translated 
     Create your language files (e.g., `src/lang/en.json`):
 
     ```json
-    // en.json
     {
-		// all default vuelidate message translations
         "validations": {
             "required": "The field {property} is required.",
 			"alpha": "The {property} is not alphabetical",
@@ -84,7 +80,6 @@ A Vue 3 plugin to seamlessly integrate Vuelidate with `vue-i18n` for translated 
 			"email": "E-mail",
 			"password": "Password",
 			"username": "Username",
-			// Better names for placeholders
 		}
     }
     ```
