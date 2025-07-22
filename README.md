@@ -6,7 +6,7 @@ A Vue 3 plugin to seamlessly integrate Vuelidate with `vue-i18n` for translated 
 
   * **Translated Validation Messages:** Out-of-the-box support for `vue-i18n` to provide user-friendly, translated validation messages.
   * **Laravel-inspired Attributes:** Automatically translates attribute names (e.g., "email" to "E-mail") within validation messages, mimicking Laravel's validation message style.
-  * **Easy Integration:** Provides a simple way to import and use Vuelidate validators that are already configured for internationalization.
+  * **Easy Integration:** Provides a simple way to use Vuelidate validators that are already configured for internationalization, accessible via Vue's `inject` API or global properties.
   * **Minimal Setup:** Once installed, validators can be used just like standard Vuelidate validators in your components.
 
 -----
@@ -18,7 +18,7 @@ A Vue 3 plugin to seamlessly integrate Vuelidate with `vue-i18n` for translated 
     ```bash
     npm install @hebertlima/vue-laradate
     ```
-
+   
 2.  **Plugin Configuration (`main.js` or `main.ts`):**
 
     ```javascript
@@ -31,8 +31,8 @@ A Vue 3 plugin to seamlessly integrate Vuelidate with `vue-i18n` for translated 
     const app = createApp(App)
 
     app.use(VueLaradate, {
-        locale: 'pt', 	// default locale
-        fallbackLocale: 'en', 	// fallback locale
+        locale: 'pt', 	
+        fallbackLocale: 'en', 	// fallback locale, you can ommit bwt
         messages: {
 			en: {}, // you can replace this with your own messages
 			pt: pt, // translate file,
@@ -46,7 +46,7 @@ A Vue 3 plugin to seamlessly integrate Vuelidate with `vue-i18n` for translated 
 
     app.mount('#app')
     ```
-
+   
 3.  **Language Files (`lang/en.json` - example):**
 
     Create your language files (e.g., `src/lang/en.json`):
@@ -83,16 +83,19 @@ A Vue 3 plugin to seamlessly integrate Vuelidate with `vue-i18n` for translated 
 		}
     }
     ```
+   
+4.  **Using Validators in Your Component (Recommended):**
 
-4.  **Using Validators in Your Component:**
+    In your Vue component's `<script setup>` block, use Vue's `inject` function to retrieve the configured validators. This ensures you're using the i18n-enabled versions provided by the plugin after its installation.
 
     ```ts
     <script setup>
-    import { ref, computed } from 'vue'
+    import { ref, computed, inject } from 'vue' // Don't forget 'inject'
     import { useVuelidate } from '@vuelidate/core'
-    - import { required, email } from '@vuelidate/validators'
-	+ import { required, email } from '@hebertlima/vue-laradate/validators'
-	
+
+    // Inject the validators provided by the Vue Laradate plugin
+    // This 'vuelidateValidators' key is provided by the plugin's installer.
+    const { required, email, minLength } = inject('vuelidateValidators') || {};
 
     const formData = ref({
         email: '',
@@ -138,6 +141,7 @@ A Vue 3 plugin to seamlessly integrate Vuelidate with `vue-i18n` for translated 
         </form>
     </template>
     ```
+    
 
 -----
 
