@@ -1,10 +1,3 @@
-Sim, consigo formatar os espaços no `README.md` para melhorar a renderização no GitHub. O problema com "espaços bagunçados" em Markdown geralmente está relacionado à forma como blocos de código e listas são formatados, ou à presença de caracteres invisíveis/quebras de linha inconsistentes.
-
-A versão que te apresentei anteriormente já segue as melhores práticas para renderização de blocos de código e listas no GitHub. A maior parte da formatação está correta.
-
-Aqui está o conteúdo do `README.md` novamente, garantindo que está alinhado com as convenções que o GitHub interpreta bem. Copie e cole este conteúdo diretamente no seu arquivo `README.md`:
-
-````markdown
 # Vue Laradate Validators (🚧 Under Development 🚧)
 
 A Vue 3 plugin to seamlessly integrate Vuelidate with `vue-i18n` for translated validation messages, inspired by Laravel's validation error messages.
@@ -169,4 +162,3 @@ Your feedback and contributions are welcome as we continue to improve this plugi
 
 ## ✅ Todo
 - Tests soon!
-````
