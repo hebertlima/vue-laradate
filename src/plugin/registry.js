@@ -2,7 +2,6 @@ import { logger } from '../utils/logger'
 
 const validators = {}
 let isReady = false
-const pendingRequests = {}
 
 export const registry = {
 	get(name) {
