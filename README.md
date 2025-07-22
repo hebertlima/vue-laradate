@@ -94,6 +94,7 @@ A Vue 3 plugin to seamlessly integrate Vuelidate with `vue-i18n` for translated 
     <script setup>
     import { ref, computed, inject } from 'vue' // Don't forget 'inject'
     import { useVuelidate } from '@vuelidate/core'
+    // import { required, email, minLength } from '@vuelidate/validators' <-- remove this
 
     // Inject the validators provided by the Vue Laradate plugin
     // This 'vuelidateValidators' key is provided by the plugin's installer.
