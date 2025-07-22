@@ -99,12 +99,6 @@ A Vue 3 plugin to seamlessly integrate Vuelidate with `vue-i18n` for translated 
     // This 'vuelidateValidators' key is provided by the plugin's installer.
     const { required, email, minLength } = inject('vuelidateValidators') || {};
 
-    // Basic check if validators are available (useful for development/testing)
-    if (!required || !email || !minLength) {
-        console.error("Vue-Laradate validators not available. Ensure the plugin is installed globally in your main.js/ts.");
-        // You might want to handle this gracefully in a production environment
-    }
-
     const formData = ref({
         email: '',
         password: ''
@@ -158,6 +152,7 @@ This project is currently **under active development**. It has been created to s
 
 Your feedback and contributions are welcome as we continue to improve this plugin!
 
+[on gitHub](https://github.com/hebertlima/vue-laradate)
 ---
 
 ## ✅ Todo
