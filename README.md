@@ -33,8 +33,8 @@ A Vue 3 plugin to seamlessly integrate Vuelidate with `vue-i18n` for translated 
     const app = createApp(App)
 
     app.use(VueLaradate, {
-        locale: 'pt',      // default locale
-        fallbackLocale: 'en',      // fallback locale
+        locale: 'pt',         // default locale
+        fallbackLocale: 'en', // fallback locale
         messages: {
             en: {}, // you can replace this with your own messages
             pt: pt, // translate file,
