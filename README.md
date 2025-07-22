@@ -153,7 +153,7 @@ This project is currently **under active development**. It has been created to s
 
 Your feedback and contributions are welcome as we continue to improve this plugin!
 
-[on gitHub](https://github.com/hebertlima/vue-laradate)
+[on Github](https://github.com/hebertlima/vue-laradate)
 ---
 
 ## ✅ Todo
