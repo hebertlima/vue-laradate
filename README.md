@@ -97,8 +97,8 @@ A Vue 3 plugin to seamlessly integrate Vuelidate with `vue-i18n` for translated 
     // import { required, email, minLength } from '@vuelidate/validators' <-- remove this
 
     // Inject the validators provided by the Vue Laradate plugin
-    // This 'vuelidateValidators' key is provided by the plugin's installer.
-    const { required, email, minLength } = inject('vuelidateValidators') || {};
+    // This 'vueLaradateValidators' key is provided by the plugin's installer.
+    const { required, email, minLength } = inject('vueLaradateValidators') || {};
 
     const formData = ref({
         email: '',
