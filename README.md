@@ -13,6 +13,11 @@ A Vue 3 plugin to seamlessly integrate Vuelidate with `vue-i18n` for translated 
 
 ---
 
+## 📷 Preview
+![Previa](https://github.com/hebertlima/vue-laradate/blob/main/arts/vuelaradate.gif?raw=true)
+
+---
+
 ## 🚀 Installation
 
 1.  **Install Dependencies:**
