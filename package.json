@@ -1,6 +1,6 @@
 {
 	"name": "@hebertlima/vue-laradate",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"type": "module",
 	"main": "./src/index.js",
 	"exports": {
