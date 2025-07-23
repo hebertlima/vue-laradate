@@ -14,8 +14,6 @@ export function buildValidator(name, validator) {
 	const validatorFn = validator.$validator || validator
 	const originalParams = validator.$params || {}
 
-	logger.info(originalParams)
-
 	const enrichedParams = { 
 		type: name,
 		...originalParams,
