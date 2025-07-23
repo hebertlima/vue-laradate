@@ -1,5 +1,5 @@
-import { inject } from 'vue'
 import { helpers } from '@vuelidate/validators'
+import { getCurrentInstance } from 'vue'
 
 export function defineValidator({
 	name,
@@ -7,13 +7,12 @@ export function defineValidator({
 	params = {},
 	async = false
 }) {
-	const i18n = inject('vueLaradateI18n', null)
-	const $t = i18n?.t ?? ((key) => key)
-
-	const finalMessage = ((ctx) => {
+	const finalMessage = (ctx) => {
+		const instance = getCurrentInstance()
+		const t = instance?.appContext?.config.globalProperties?.$t ?? ((key) => key)
 		const path = `validations.${name}`
-		return $t(path, { ...ctx.$params, $model: ctx.$model })
-	})
+		return t(path, { ...ctx.$params, $model: ctx.$model })
+	}
 
 	const wrapped = (value, siblings, vm) =>
 		!helpers.req(value) || validator.call(vm, value, siblings, vm)

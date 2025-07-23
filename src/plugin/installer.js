@@ -21,6 +21,7 @@ export const installPlugin = (app, options = {}) => {
 		legacy: false,
 		locale,
 		fallbackLocale,
+		globalInjection: true,
 		messages: finalMessages,
 		missingWarn: false
 	})
