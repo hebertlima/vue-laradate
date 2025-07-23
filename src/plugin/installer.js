@@ -24,15 +24,38 @@ export const installPlugin = (app, options = {}) => {
 	const { withI18nMessage } = createI18nProxies(finalI18n.global)
 	const baseValidators = getBaseValidators()
 
-	const i18nValidators = Object.keys(baseValidators).reduce((acc, name) => {
-		acc[name] = withI18nMessage(baseValidators[name])
-		return acc
-	}, {})
+	console.log(baseValidators)
+
+	const i18nValidators = {}
+
+	Object.keys(baseValidators).forEach(name => {
+		const original = baseValidators[name]
+
+		try {
+			if (typeof original === 'function' && !original.$validator) {
+				i18nValidators[name] = (...args) => {
+					const instance = original(...args)
+					return withI18nMessage(instance)
+				}
+			} else {
+				i18nValidators[name] = withI18nMessage(original)
+			}
+		} catch (error) {
+			logger.warn(`Could not wrap validator "${name}" with i18n message`, error)
+			i18nValidators[name] = original
+		}
+	})
 
 	const finalValidators = {}
-	for (const name in i18nValidators) {
-		finalValidators[name] = createValidator(name, i18nValidators[name])
-	}
+
+	Object.keys(i18nValidators).forEach(name => {
+		const validatorOrFactory = i18nValidators[name]
+		if (typeof validatorOrFactory === 'function' && !validatorOrFactory.$validator) {
+			finalValidators[name] = (...args) => createValidator(name, validatorOrFactory(...args))
+		} else {
+			finalValidators[name] = withI18nMessage(validatorOrFactory)
+		}
+	})
 
 	registry.populate(finalValidators)
 
