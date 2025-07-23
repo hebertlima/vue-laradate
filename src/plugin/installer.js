@@ -1,4 +1,3 @@
-// src/plugin/installer.js
 import { getBaseValidators } from '../validators/core'
 import { createI18nProxies } from '../validators/proxies'
 import { createValidator } from '../utils/validator-wrapper'
@@ -61,8 +60,6 @@ export const installPlugin = (app, options = {}) => {
 	})
 
 	Object.entries(customValidations).forEach(([name, validator]) => finalValidators[name] = validator)
-
-	console.log(finalValidators)
 
 	registry.populate(finalValidators)
 
