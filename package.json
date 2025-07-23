@@ -5,7 +5,8 @@
 	"main": "./src/index.js",
 	"exports": {
 		".": "./src/index.js",
-		"./i18n/*": "./src/i18n/*.json"
+		"./i18n/*": "./src/i18n/*.json",
+		"./defineValidator": "./src/utils/custom-validators.js"
 	},
 	"files": [
 		"src",
