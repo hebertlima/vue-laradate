@@ -5,17 +5,23 @@ import { createValidator } from '../utils/validator-wrapper'
 import { registry } from './registry'
 import { logger } from '../utils/logger'
 import { createI18n } from 'vue-i18n'
+import enMessages from '../i18n/en.json'
 
 export const installPlugin = (app, options = {}) => {
 	logger.debug('Initializing Vue-Laradate plugin...')
 
-	const { i18n, locale = 'en', fallbackLocale = 'en', messages = {} } = options
+	const { i18n, locale = 'en', fallbackLocale = 'en', messages = {}, customValidations = [] } = options
+
+	const finalMessages = {
+		en: enMessages,
+		...messages
+	}
 
 	const finalI18n = i18n || createI18n({
 		legacy: false,
 		locale,
 		fallbackLocale,
-		messages,
+		messages: finalMessages,
 		missingWarn: false
 	})
 
@@ -23,10 +29,8 @@ export const installPlugin = (app, options = {}) => {
 
 	const { withI18nMessage } = createI18nProxies(finalI18n.global)
 	const baseValidators = getBaseValidators()
-
-	console.log(baseValidators)
-
 	const i18nValidators = {}
+	const finalValidators = {}
 
 	Object.keys(baseValidators).forEach(name => {
 		const original = baseValidators[name]
@@ -46,8 +50,6 @@ export const installPlugin = (app, options = {}) => {
 		}
 	})
 
-	const finalValidators = {}
-
 	Object.keys(i18nValidators).forEach(name => {
 		const validatorOrFactory = i18nValidators[name]
 		if (typeof validatorOrFactory === 'function' && !validatorOrFactory.$validator) {
@@ -57,9 +59,14 @@ export const installPlugin = (app, options = {}) => {
 		}
 	})
 
+	Object.entries(customValidations).forEach(([name, validator]) => finalValidators[name] = validator)
+
+	console.log(finalValidators)
+
 	registry.populate(finalValidators)
 
-	app.provide('vuelidateValidators', finalValidators)
+	app.provide('vueLaradateValidators', finalValidators)
+	app.provide('vueLaradateI18n', finalI18n.global)
 	app.config.globalProperties.$validators = finalValidators
 
 	logger.debug('Plugin initialized successfully')
