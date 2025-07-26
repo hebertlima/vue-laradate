@@ -14,8 +14,9 @@ export function defineValidator({
 		return t(path, { ...ctx.$params, $model: ctx.$model })
 	}
 
-	const wrapped = (value, siblings, vm) =>
-		!helpers.req(value) || validator.call(vm, value, siblings, vm)
+	const wrapped = function (value, siblings, index, parent, root) {
+		return !helpers.req(value) || validator.call(this, value, siblings, index, parent, root)
+	}
 
 	const isAsync = async || validator.constructor.name === 'AsyncFunction'
 
